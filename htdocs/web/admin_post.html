@@ -1,0 +1,148 @@
+{include file="header.html" title="寄售管理"}
+	<link href="/web/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+	<script src="/web/assets/js/google-code-prettify/prettify.js"></script>
+	<link href="/web/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<script src="/web/assets/js/jquery.hotkeys.js"></script>
+	<script src="/web/assets/js/bootstrap-wysiwyg.js"></script>
+	<script src="/web/assets/js/poster.js"></script>
+</HEAD>
+<BODY>
+<div class="container-narrow">
+	{include file="masthead.html"}
+	<div class="row">
+		<ul class="nav nav-tabs">
+		  <li><a href="/"><strong>回首页</strong></a></li>
+		  <li class="active"><a href="#"><strong>寄售管理</strong></a></li>
+		  <li><a href="/poster/admin_headnews"><strong>头条信息管理</strong></a></li>
+		  <li><a href="/poster/admin_my_info"><strong>个人页管理</strong></a></li>
+		  <li><a href="/poster/admin_user"><strong>用户管理</strong></a></li>
+		</ul>
+	</div>
+		{if $err_msg != ''}
+			<div class="well">{$err_msg}</div>
+		{/if}
+		{if $uniqid != ''}
+		<form id="form" class="form-horizontal" method="post" enctype="multipart/form-data"  action="/poster/admin_post/update/{$uniqid}">
+		{else}
+		<form id="form" class="form-horizontal" method="post" enctype="multipart/form-data"  action="/poster/admin_post/add">
+		{/if}
+		<div class="control-group ">
+				<label class="control-label">置顶：</label>
+				<div class="controls">
+					<label class="checkbox">
+					  <input type="checkbox" id="top" name="top" value="1">
+					  置顶
+					</label>
+				</div>
+			</div>
+			<div class="control-group ">
+				<label class="control-label">标题：</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<input type="text" class="input" id="title" name="title" placeholder="标题">
+					</div>
+				</div>
+			</div>
+			<div class="control-group ">
+				<label class="control-label">简述：</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<input type="text" class="input" id="short_desc" name="short_desc" placeholder="简述">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">城市：</label>
+				<div class="controls">		
+					<select class="" id="city" name="city" placeholder="城市"></select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">地址：</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<input type="text" class="input" id="addr" name="addr" placeholder="地址">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">经度：</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<input type="text" class="input" id="lat" name="lat" placeholder="经度">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">纬度：</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<input type="text" class="input" id="lng" name="lng" placeholder="纬度">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">售价：</label>
+				<div class="controls">
+					<div class="input-prepend">
+						<input type="text" class="input" id="price" name="price" placeholder="售价">
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">状态：</label>
+				<div class="controls">
+					<label class="checkbox">
+					  <input type="checkbox" id="s_done" name="status[]" value="1">
+					  <span class="label label-success">成交</span>
+					</label>
+					<label class="checkbox">
+					  <input type="checkbox" id="s_new_price" name="status[]" value="2">
+					  <span class="label label-info">新价</span>
+					</label>
+					<label class="checkbox">
+					  <input type="checkbox" id="s_dealing" name="status[]" value="3">
+					  <span class="label label-warning">预售</span>
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">缩略图片：</label>
+				<div class="controls">
+					<input class="input-file" id="img0"  name="img0" type="file" >
+				</div>
+				<div class="controls">
+					<input class="input-file" id="img1"  name="img1" type="file" >
+				</div>
+				<div class="controls">
+					<input class="input-file" id="img2"  name="img2" type="file">
+				</div>
+				<div class="controls">
+					<input class="input-file" id="img3"  name="img3" type="file">
+				</div>
+				<div class="controls">
+					<input class="input-file" id="img4"  name="img4" type="file">
+				</div>
+			</div>
+			{include file="textarea.html" label_name="详情："}
+			<input type="hidden" name="hide_me" id="hide_me" value="">
+			<div class="control-group">
+				<div class="controls">
+					{if $uniqid != ''}
+					<button type="submit" class="btn btn-success">修改</button>
+					{else}
+					<button type="submit" class="btn btn-success">添加</button>
+					{/if}
+				</div>
+			</div>
+	    </form>
+{include file="footer.html"}
+ </div>
+</body>
+ <script>
+ var uniqid = "{$uniqid}";
+ $(document).ready(function(){
+	init_admin_post(uniqid);
+});
+</script>
+</html>

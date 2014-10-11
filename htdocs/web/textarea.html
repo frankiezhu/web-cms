@@ -1,0 +1,55 @@
+		<div class="control-group">
+			<label class="control-label">{$label_name}</label>
+			<div class="controls">
+				<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+				  <div class="btn-group">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" title="字体"><i class="icon-font"></i><b class="caret"></b></a>
+					  <ul class="dropdown-menu">
+					  </ul>
+					</div>
+				  <div class="btn-group">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" title="大小"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+					  <ul class="dropdown-menu">
+					  <li><a data-edit="fontSize 5"><font size="5">大</font></a></li>
+					  <li><a data-edit="fontSize 3"><font size="3">中</font></a></li>
+					  <li><a data-edit="fontSize 1"><font size="1">小</font></a></li>
+					  </ul>
+				  </div>
+				  <div class="btn-group">
+				   <a class="btn dropdown-toggle" data-toggle="dropdown" title="颜色"><i class="icon-pencil"></i>&nbsp;<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					<li><a data-edit="foreColor #ff0000"><font color="#ff0000">红</font></a></li>
+					<li><a data-edit="foreColor #00ff00"><font color="#00ff00">绿</font></a></li>
+					<li><a data-edit="foreColor #0000ff"><font color="#0000ff">蓝</font></a></li>
+					</ul>
+				  </div>
+				  <div class="btn-group">
+					<a class="btn" data-edit="bold" title="加粗 (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+					<a class="btn" data-edit="italic" title="倾斜 (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+					<a class="btn" data-edit="underline" title="下划线 (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+				  </div>
+				  <div class="btn-group">
+					<a class="btn" data-edit="outdent" title="减小缩进 (Shift+Tab)"><i class="icon-indent-left"></i></a>
+					<a class="btn" data-edit="indent" title="缩进 (Tab)"><i class="icon-indent-right"></i></a>
+				  </div>
+				  <div class="btn-group">
+					<a class="btn" data-edit="justifyleft" title="左对齐 (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+					<a class="btn" data-edit="justifycenter" title="居中 (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+					<a class="btn" data-edit="justifyright" title="右对齐(Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+				  </div>
+				  <div class="btn-group">
+					<a class="btn" title="插入图片(或者拖拽)" id="pictureBtn">
+						<i class="icon-picture"></i>
+					</a>
+					<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+				  </div>
+				  <div class="btn-group">
+					<a class="btn" data-edit="undo" title="撤销 (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+					<a class="btn" data-edit="redo" title="恢复 (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+				  </div>
+				</div>
+
+				<div id="editor">
+				</div>
+			</div>
+		</div>

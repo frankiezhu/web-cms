@@ -1,0 +1,101 @@
+{include file="header.html" title="主页"}
+<script src="/web/assets/js/poster.js"></script>
+</HEAD>
+<BODY>
+<div class="container-narrow">
+	{include file="masthead.html"}
+	<div style="width:900">
+		<img src="/web/resource/system/head_img.jpg">  
+	</div>
+	<div style="margin: 30px 0" >
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#"><strong>待售</strong></a></li>
+		  <li><a href="/poster/sold"><strong>已售</strong></a></li>
+		  <li><a href="/poster/about"><strong>我要寄售</strong></a></li>
+		</ul>
+		<div style="margin-left:10">
+			<ul id="city" class="nav nav-pills">
+				<li><strong style="font-weight: bold;">城市：</strong></li>
+			</ul>
+			<ul id="price" class="nav nav-pills">
+				<li><strong style="font-weight: bold;">总价：</strong></li>
+				<li><a href="/poster/price/all">不限</a></li>   
+				<li><a href="/poster/price/0-100">0-100</a></li>
+				<li><a href="/poster/price/100-1000">100-1000</a></li> 
+				<li><a href="/poster/price/1000-10000">1000-10000</a></li> 
+				<li><a href="/poster/price/10000_a">10000以上</a></li> 
+			</ul>
+			<ul id="status" class="nav nav-pills">
+				<li><strong style="font-weight: bold;">状态：</strong></li>
+				<li><a href="/poster/status/all">不限</a></li> 
+				<li><a href="/poster/status/done"><span class="label label-success">成交</span></a></li>				
+				<li><a href="/poster/status/new_price"><span class="label label-info">新价</span></a></li>
+				<li><a href="/poster/status/dealing"><span class="label label-warning">预售</span></a></li>
+			</ul>
+			<ul id="time" class="nav nav-pills">
+				<li><strong style="font-weight: bold;">时间：</strong></li>
+				<li><a href="/poster/time/all">不限</a></li> 
+				<li><a href="/poster/time/week">1周内</a></li>				
+				<li><a href="/poster/time/month">1月内</a></li>
+				<li><a href="/poster/time/year">1年内</a></li> 
+			</ul>
+
+		</div>
+		<div class="clear"></div>
+	</div>
+	<hr>
+	<div class = "row-fluid">
+	{foreach from=$data_array key=num item=data}
+		<div class="row bkyellow">
+			<div class="pic">
+				<a href="/poster/detail/{$data.uniqid}" target="_blank" title=""><img src="/web/resource/{$data.uniqid}/img0.jpg"></a>
+			</div>
+			<div class="house">             
+				<dl>
+					<dt class='dt'>
+						<p class="housetitle">
+							<a href="/poster/detail/{$data.uniqid}" target="_blank" title="">{$data.title}</a>
+						</p>
+						<p>
+							{$data.short_desc}
+						</p>
+						<p class="housetitle">
+							<a href="/poster/city/{$data.city}" target="_blank" title="">{$data.city}</a>&nbsp;&nbsp;{$data.addr}
+						</p>  
+						<p class="gray9">
+							发布日期：{$data.create_time}
+						</p>
+					</dt>
+					<dd class="area" style="margin-top:2px">
+						<ul style="list-style:none;">
+						{if {$data.s_done} != 0}
+						<li><p class="label label-success">成交</p></li>
+						{/if}
+						{if {$data.s_new_price} != 0}
+						<li><p class="label label-info">新价</p></li>
+						{/if}
+						{if {$data.s_dealing} != 0}
+						<li><p class="label label-warning">预售</p></li>
+						{/if}
+						</ul>
+					</dd>
+					<dd class="money">
+						<p class="price">{$data.price}万元</p>
+					</dd>        
+				</dl>
+			</div>
+			<div class="clear"></div>
+		</div>
+	{/foreach}
+	</div><!--endof houselist-->
+	{$pagination}
+{include file="footer.html"}
+ </div>
+</body>
+ <script>
+ var search = ["{$search.city}","{$search.price}","{$search.status}","{$search.time}"];
+ $(document).ready(function(){
+	init_index(search);
+});
+</script>
+</html>

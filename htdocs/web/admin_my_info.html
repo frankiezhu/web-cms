@@ -1,0 +1,77 @@
+{include file="header.html" title="基本信息管理"}
+	<link href="/web/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+	<script src="/web/assets/js/google-code-prettify/prettify.js"></script>
+	<link href="/web/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<script src="/web/assets/js/jquery.hotkeys.js"></script>
+	<script src="/web/assets/js/bootstrap-wysiwyg.js"></script>
+	<script src="/web/assets/js/poster.js"></script>
+</HEAD>
+<BODY>
+<div class="container-narrow">
+	{include file="masthead.html"}
+	<div class="row">
+		<ul class="nav nav-tabs">
+		  <li><a href="/"><strong>回首页</strong></a></li>
+		  <li><a href="/poster/admin_post"><strong>寄售管理</strong></a></li>
+		  <li><a href="/poster/admin_headnews"><strong>头条信息管理</strong></a></li>
+		  <li class="active"><a href="#"><strong>个人页管理</strong></a></li>
+		  <li><a href="/poster/admin_user"><strong>用户管理</strong></a></li>
+		</ul>
+	</div>
+	<form id="form" class="form-horizontal" method="post"  enctype="multipart/form-data" action="/poster/admin_my_info/form">
+		{if $err_msg != ''}
+			<div class="well">{$err_msg}</div>
+		{/if}
+		<div class="control-group">
+			<label class="control-label">电话号码：</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<input type="text" class="input" id="tel" name="tel" placeholder="电话号码">
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">邮箱：</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<input type="text" class="input" id="mail" name="mail" placeholder="邮箱">
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">微信：</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<input type="text" class="input" id="wechat" name="wechat" placeholder="微信">
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">二维码图片：</label>
+			<div class="controls">
+				<input class="input-file" id="wechat_img" name="wechat_img" type="file">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">我的头像：</label>
+			<div class="controls">
+				<input class="input-file" id="photo" name="photo" type="file">
+			</div>
+		</div>
+		{include file="textarea.html" label_name="详情："}
+		<input type="hidden" name="hide_me" id="hide_me" value="">
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn btn-success" onclick="validate" >提交</button>
+			</div>
+		</div>
+	</form>
+{include file="footer.html"}
+ </div>
+</body>
+<script>
+ $(document).ready(function(){
+	init_admin_my_info();
+});
+</script>
+</html>

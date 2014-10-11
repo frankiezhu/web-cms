@@ -1,0 +1,66 @@
+{include file="header.html" title="已售"}
+</HEAD>
+<BODY>
+<div class="container-narrow">
+	{include file="masthead.html"}
+	<div style="width:900">
+		<img src="/web/resource/system/head_img.jpg">  
+	</div>
+	<div style="margin: 30px 0">
+		<ul class="nav nav-tabs">
+		  <li><a href="/"><strong>待售</strong></a></li>
+		  <li class="active"><a href="#"><strong>已售</strong></a></li>
+		  <li><a href="/poster/about"><strong>我要寄售</strong></a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+	<div class = "row-fluid">
+	{foreach from=$data_array key=num item=data}
+		<div class="bkyellow">
+			<div class="pic">
+				<a href="/poster/detail/{$data.uniqid}" target="_blank" title=""><img src="/web/resource/{$data.uniqid}/img0.jpg"></a>
+			</div>
+			<div class="house">             
+				<dl>
+					<dt class='dt'>
+						<p class="housetitle">
+							<a href="/poster/detail/{$data.uniqid}" target="_blank" title="">{$data.title}</a>
+						</p>
+						<p>
+							{$data.short_desc}
+						</p>
+						<p class="housetitle">
+							<a href="/poster/city/{$data.city}" target="_blank" title="">{$data.city}</a>&nbsp;&nbsp;{$data.addr}
+						</p>  
+						<p class="gray9">
+							发布日期：{$data.create_time}
+						</p>
+					</dt>
+					<dd class="area" style="margin-top:2px">
+						<ul style="list-style:none;">
+						{if {$data.s_done} != 0}
+						<li><p class="label label-success">成交</p></li>
+						{/if}
+						{if {$data.s_new_price} != 0}
+						<li><p class="label label-info">新价</p></li>
+						{/if}
+						{if {$data.s_dealing} != 0}
+						<li><p class="label label-warning">预售</p></li>
+						{/if}
+						</ul>
+					</dd>
+					<dd class="money">
+						<p class="price">{$data.price}万元</p>
+						<p></p>
+					</dd>        
+				</dl>
+			</div>
+			<div class="clear"></div>
+		</div>
+	{/foreach}
+	</div>
+	{$pagination}
+{include file="footer.html"}
+ </div>
+</body>
+</html>

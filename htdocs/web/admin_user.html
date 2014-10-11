@@ -1,0 +1,38 @@
+	{include file="header.html" title="登录"}
+	<script src="/web/assets/js/poster.js"></script>
+</HEAD>
+<BODY>
+<div class="container-narrow">
+	{include file="masthead.html"}
+	<div class="row">
+		<ul class="nav nav-tabs">
+		  <li><a href="/"><strong>回首页</strong></a></li>
+		  <li><a href="/poster/admin_post"><strong>寄售管理</strong></a></li>
+		  <li><a href="/poster/admin_headnews"><strong>头条信息管理</strong></a></li>
+		  <li><a href="/poster/admin_my_info"><strong>个人页管理</strong></a></li>
+		  <li class="active"><a href="#"><strong>用户管理</strong></a></li>
+		</ul>
+	</div>
+    <div class="container">
+      <form class="form-signin" id="form" class="form-horizontal" method="post" enctype="multipart/form-data"  action="/poster/admin_user/form">
+		{if $err_msg != ''}
+			<div class="well">{$err_msg}</div>
+		{/if}
+		<label id="err_msg" class="label label-important">用户管理：</label>
+		<br>
+		<br>
+		<div class="controls">		
+			<select name="action" placeholder="操作">
+				<option value='add'>添加</option>
+				<option value='del'>删除</option>
+			</select>
+		</div>
+        <input id="username" name="username" type="text" class="input-xlarge" placeholder="username">
+        <input id="password" name="password" type="text" class="input-xlarge" placeholder="password">
+        <button class="btn btn-success" type="submit">提交</button>
+      </form>
+    </div> <!-- /container -->
+	{include file="footer.html"}
+</div>
+</body>
+</html>

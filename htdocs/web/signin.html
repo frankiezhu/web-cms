@@ -1,0 +1,49 @@
+	{include file="header.html" title="登录"}
+	<script src="/web/assets/js/poster.js"></script>
+</HEAD>
+<BODY class="signin_body">
+    <div class="container">
+	<div class="masthead">
+		<ul class="nav nav-pills pull-right">
+		  <li class="active"><a href="#">登录</a></li>
+		  <li><a href="/poster/about">联系我</a></li>
+		</ul>
+		<h3 class="muted">加拿大地产网</h3>
+	</div>
+	<div class="row">
+		<div class="span6">
+		<ul class="breadcrumb">
+		  <li>
+			<a href="/">首页</a><span class="divider">></span>
+		  </li>
+		  <li class="active">登录</li>
+		</ul>
+		</div>
+	</div>
+      <form class="form-signin" id="form" class="form-horizontal" method="post" enctype="multipart/form-data"  action="/poster/signin/login">
+        <div style="margin-top:20" >
+			<ul class="nav nav-tabs">
+			  <!--<li><a href="signup.html"><strong>注册</strong></a></li>-->
+			  <li class="active"><a href="#"><strong>登录</strong></a></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<label id="err_msg" class="label label-important">{$err_msg}</label>
+        <input id="mail" name="mail" type="text" class="input-xlarge" placeholder="Email address">
+        <input id="password" name="password" type="password" class="input-xlarge" placeholder="Password">
+		<img id="img_passcode" src="/poster/passcode" title="看不清，点击换一张" alt="验证码">
+		<input id="passcode" type="text" class="input-xsmall" maxlength="4" placeholder="Passcode">
+        <br>
+		<!--label class="checkbox">
+          <input type="checkbox" value="remember-me">记住密码
+        </label-->
+        <button class="btn btn-success" type="submit">登录</button>
+      </form>
+    </div> <!-- /container -->
+</body>
+ <script>
+ $(document).ready(function(){
+	init_signin();
+});
+</script>
+</html>

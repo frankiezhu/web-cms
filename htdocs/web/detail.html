@@ -1,0 +1,100 @@
+{include file="header.html" title="详情 {$data.title}"}
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+	<script src="/web/assets/js/poster.js"></script>
+	<script>init_google_map({$data.lat}, {$data.lng})</script>
+</HEAD>
+<BODY>
+<div class="container-narrow">
+	{include file="masthead.html"}
+    <div class="row">
+		<div class="span6">
+		<ul class="breadcrumb">
+		  <li>
+			<a href="/">首页</a><span class="divider">></span>
+		  </li>
+		  <li class="active">{$data.title}</li>
+		</ul>
+		</div>
+	</div>
+	<div class="row well">
+		{include file="resource/system/head_info.html"}
+	</div>
+	{if $err_msg != ''}
+		<div class="row well">{$err_msg}</div>
+	{/if}
+	<div class="row well">
+		<div id="special_tags" style="margin:8 20">
+			{if {$data.s_done} != 0}
+			<span class="label label-success">成交</span>
+			{/if}
+			{if {$data.s_new_price} != 0}
+			<span class="label label-info">新价</span>
+			{/if}
+			{if {$data.s_dealing} != 0}
+			<span class="label label-warning">预售</span>
+			{/if}
+			{if $user_info.has_login}
+			<div class="btn-group pull-right">
+                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+					管理<span class="caret"></span>
+				</button>
+                <ul class="dropdown-menu">
+                  <li><a href="/poster/admin_post/top/{$uniqid}">置顶</a></li>
+                  <li><a href="/poster/admin_post/delete/{$uniqid}">删除</a></li>
+                  <li><a href="/poster/admin_post/edit/{$uniqid}">修改</a></li>
+                  <!--li class="divider"></li-->
+                </ul>
+            </div>
+			{/if}
+		</div>
+        <div class="span4">
+		    <div id="myCarousel" class="carousel slide">
+				<!-- Carousel items -->
+				<div id="thumbnail" class="carousel-inner">
+					{foreach from=$imgs key=num item=img}
+					{if {$num} == 0}
+					<div class="active item"><img src="/web/resource/{$uniqid}/{$img}" alt="" width="300" height="99" /></div>
+					{else}
+					<div class="item"><img src="/web/resource/{$uniqid}/{$img}" alt="" width="300" height="99" /></div>
+					{/if}
+					{/foreach}
+				</div>
+				<!-- Carousel nav -->
+				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
+		<div id="detail_info" class="span6 well" style="margin-left:30;">
+			<div class = "detail_info">
+				<dl>
+					<dd><span class="gray6">城市：</span>{$data.city}</dd>
+					<dd><span class="gray6">价格：</span>{$data.price}</dd>
+					<dd><span class="gray6">地址：</span>{$data.addr}</dd>
+					<dd><span class="gray6">简述：</span>{$data.short_desc}</dd>
+					
+				</dl>
+			</div>
+		</div>
+	</div>
+	<div class="row well">
+		<div id="map_titile">
+			<a class="btn btn-info" data-toggle="collapse" href="#map_img"  data-toggle="collapse">地图信息>></a>
+		</div>
+		<div id="map_img" class="collapse in">
+			<div id="googleMap" style="width:50%;height:400px;"></div>
+		</div>
+		<hr style="border:0;background-color:#ddd;height:1px;">
+		<div id="desc_titile">
+			<a class="btn btn-info"  href="#desc_main"  data-toggle="collapse">详细介绍>></a>
+		</div>
+		<div id="desc_main" class="collapse in">
+			{include file="resource/{$uniqid}/detail.html"}
+		</div>
+	</div>
+	<hr>
+   <footer>
+        <p>&copy; Company 2013 加拿大地产网</p>
+   </footer>
+ </div>
+</body>
+</html>

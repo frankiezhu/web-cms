@@ -1,0 +1,13 @@
+	<div class="masthead">
+		<ul class="nav nav-pills pull-right">
+		  {if $user_info.has_login}
+		  <li><a href="#">{$user_info.user_name}</a></li>
+		  <li><a href="/poster/logout">退出</a></li>
+		  <li class="active"><a href="/poster/admin_post">后台管理</a></li>
+		  {else}
+		  <li class="active"><a href="/poster/signin">登录</a></li>
+		  {/if}
+		  <li><a href="/poster/about">联系我</a></li>	  
+		</ul>
+		<h3 class="muted">加拿大地产网</h3>
+	</div>
